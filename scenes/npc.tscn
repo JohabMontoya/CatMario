@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://orl3iwrxajff"]
+
+[ext_resource type="Script" uid="uid://jv2t4syo2l2t" path="res://scripts/npc.gd" id="1_nh2m4"]
+[ext_resource type="Texture2D" uid="uid://bl13tvkn2p1yd" path="res://Sprites/CatMario/npc.png" id="2_rv78h"]
+[ext_resource type="PackedScene" uid="uid://dt2th18faiqq7" path="res://scenes/dialogo.tscn" id="4_7n8xq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rv78h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rv78h")
+}],
+"loop": true,
+"name": &"Interact",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n8xq"]
+size = Vector2(54.5, 69.5)
+
+[node name="Node2D" type="CharacterBody2D" unique_id=2107062958]
+scale = Vector2(2, 2)
+script = ExtResource("1_nh2m4")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=272459182]
+sprite_frames = SubResource("SpriteFrames_rv78h")
+animation = &"Interact"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1339594907]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1002532025]
+position = Vector2(0.25, -0.25)
+shape = SubResource("RectangleShape2D_7n8xq")
+
+[node name="dialogo" parent="." unique_id=1887737947 instance=ExtResource("4_7n8xq")]
+offset_left = -54.0
+offset_top = -89.0
+offset_right = 54.0
+offset_bottom = -39.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dt2th18faiqq7"]
+
+[ext_resource type="Script" uid="uid://soi72biqmvv6" path="res://scripts/dialogo.gd" id="1_qv0hs"]
+
+[sub_resource type="SystemFont" id="SystemFont_s2xen"]
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_y0g0c"]
+default_font = SubResource("SystemFont_s2xen")
+default_font_size = 12
+
+[node name="dialogo" type="PanelContainer" unique_id=1887737947]
+offset_left = -1.0
+offset_right = 184.0
+offset_bottom = 89.0
+script = ExtResource("1_qv0hs")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1389243432]
+layout_mode = 2
+theme = SubResource("Theme_y0g0c")

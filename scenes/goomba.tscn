@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bdkajbkr1wtk5"]
+
+[ext_resource type="Script" uid="uid://cos4ktnu71y0b" path="res://scripts/goomba.gd" id="1_72rj0"]
+[ext_resource type="Texture2D" uid="uid://dxcpgb2joel6m" path="res://Sprites/CatMario/Goomba2.png" id="2_fgpj4"]
+[ext_resource type="Texture2D" uid="uid://d35eyvkhnttoe" path="res://Sprites/CatMario/Goomba1.png" id="2_s1jgw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jhk7v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fgpj4")
+}],
+"loop": true,
+"name": &"morir",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s1jgw")
+}],
+"loop": true,
+"name": &"moverse",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2npf"]
+size = Vector2(12.400001, 13.200002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1jgw"]
+size = Vector2(15.200003, 10)
+
+[node name="Node2D" type="CharacterBody2D" unique_id=1593679310]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_72rj0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=967936297]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_jhk7v")
+animation = &"moverse"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=279970935]
+position = Vector2(-5.9604634e-08, 0.9999998)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_a2npf")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1461100735]
+collision_layer = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=741163780]
+position = Vector2(0, 2.5999994)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_s1jgw")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

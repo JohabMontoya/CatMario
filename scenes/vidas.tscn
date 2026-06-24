@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://csqraqcjlrp8s"]
+
+[ext_resource type="Script" uid="uid://clsk0ux0j3hkq" path="res://scripts/Health_Bar.gd" id="1_sv35g"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=549450195]
+script = ExtResource("1_sv35g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=161728437]
+anchors_preset = -1
+anchor_right = 0.053000003
+anchor_bottom = 0.032
+offset_left = 1.0
+offset_top = -44.0
+offset_right = 144.944
+offset_bottom = 80.264

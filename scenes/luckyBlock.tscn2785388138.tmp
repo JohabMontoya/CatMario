@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://brvy5icalr30k"]
+
+[ext_resource type="Texture2D" uid="uid://d20kq1tx33fl" path="res://Sprites/bloqueSorpresa1.png" id="1_4ugc6"]
+[ext_resource type="Script" uid="uid://b7sqytb75gobq" path="res://scripts/lucky_block.gd" id="1_tnw7i"]
+[ext_resource type="Texture2D" uid="uid://cyyver2cfl8s4" path="res://Sprites/bloqueSorpresa2.png" id="2_tnw7i"]
+[ext_resource type="Texture2D" uid="uid://ku6qx3eaipd5" path="res://Sprites/bloqueSorpresa3.png" id="3_4nmea"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lrfwg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4ugc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_tnw7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4nmea")
+}],
+"loop": true,
+"name": &"bloque",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkxht"]
+size = Vector2(16, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnw7i"]
+size = Vector2(16, 16)
+
+[node name="Node2D" type="Node2D" unique_id=2005891247]
+script = ExtResource("1_tnw7i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=516041363]
+sprite_frames = SubResource("SpriteFrames_lrfwg")
+animation = &"bloque"
+frame_progress = 0.3997382
+
+[node name="Area2D" type="Area2D" parent="." unique_id=904277519]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1877698946]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_pkxht")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=670964233]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=115871566]
+shape = SubResource("RectangleShape2D_tnw7i")
+debug_color = Color(0.89126986, 0.00024873973, 0.7922896, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

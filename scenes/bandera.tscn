@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cvh3i1tcnqtrc"]
+
+[ext_resource type="Script" uid="uid://bgd1tt747mrbg" path="res://scripts/bandera.gd" id="1_cykv8"]
+[ext_resource type="Texture2D" uid="uid://cut5y4whudnog" path="res://Sprites/CatMario/banderaFinal1.png" id="1_ejcel"]
+[ext_resource type="Texture2D" uid="uid://15t7i1736e0r" path="res://Sprites/CatMario/banderaFinal2.png" id="2_cykv8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ls51x"]
+size = Vector2(35, 20.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cykv8"]
+size = Vector2(20, 370)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1525307249]
+script = ExtResource("1_cykv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1495053248]
+position = Vector2(-8, 354)
+shape = SubResource("RectangleShape2D_ls51x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026785630]
+texture = ExtResource("1_ejcel")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=952851390]
+position = Vector2(0, 184)
+scale = Vector2(1, 5.2)
+texture = ExtResource("2_cykv8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=513797489]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1082560974]
+position = Vector2(-5, 155)
+shape = SubResource("RectangleShape2D_cykv8")

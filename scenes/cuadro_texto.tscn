@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://up83ipqse3w1"]
+
+[ext_resource type="Script" uid="uid://3r2avuxwn0l5" path="res://scripts/cuadro_texto.gd" id="1_10bmo"]
+
+[node name="CuadroTexto" type="CanvasLayer" unique_id=682660416]
+script = ExtResource("1_10bmo")
+
+[node name="Container" type="Container" parent="." unique_id=1752522054]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Container" unique_id=1173297229]
+layout_mode = 2

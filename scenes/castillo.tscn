@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://1u8uf3f87u5j"]
+
+[ext_resource type="Texture2D" uid="uid://ptn8msogdnfk" path="res://Sprites/CatMario/castilloFinal.png" id="1_hmam6"]
+[ext_resource type="Script" uid="uid://qltvym1yq2bw" path="res://scripts/castillo.gd" id="1_wlas6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmam6"]
+size = Vector2(16, 44)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=512774355]
+script = ExtResource("1_wlas6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1905919812]
+texture = ExtResource("1_hmam6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1473404415]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=643322961]
+position = Vector2(8, 22)
+shape = SubResource("RectangleShape2D_hmam6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=218560477]
+position = Vector2(29, 21)
+shape = SubResource("RectangleShape2D_hmam6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

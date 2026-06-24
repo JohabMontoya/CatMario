@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://d0c38q7wt4ybn"]
+
+[ext_resource type="Script" uid="uid://cjp72h5sg2tt3" path="res://scripts/mario_grande.gd" id="1_mm5en"]
+[ext_resource type="Texture2D" uid="uid://ogh1q8ki2e4m" path="res://Sprites/PC _ Computer - Shobon _ Syobon Action - Miscellaneous - General Sprites.png" id="2_mm5en"]
+[ext_resource type="Texture2D" uid="uid://cjc134f4fabw1" path="res://Sprites/CatMario/CatMario9.png" id="3_7vmus"]
+[ext_resource type="Texture2D" uid="uid://dhphvov37rqhi" path="res://Sprites/CatMario/CatMario8.png" id="3_ii1i5"]
+[ext_resource type="Texture2D" uid="uid://ds2qibqfbqx2f" path="res://Sprites/CatMario/CatMario1.png" id="4_ii1i5"]
+[ext_resource type="Texture2D" uid="uid://bakc7kwrtqxbo" path="res://Sprites/CatMario/CatMario3.png" id="5_bihih"]
+[ext_resource type="Texture2D" uid="uid://bm0g148mefwjg" path="res://Sprites/CatMario/CatMario7.png" id="6_l021m"]
+[ext_resource type="PackedScene" uid="uid://csqraqcjlrp8s" path="res://scenes/vidas.tscn" id="7_7vmus"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ievi"]
+atlas = ExtResource("2_mm5en")
+region = Rect2(0, 0, 31, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7v4w"]
+atlas = ExtResource("2_mm5en")
+region = Rect2(31, 0, 31, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2eqv"]
+atlas = ExtResource("2_mm5en")
+region = Rect2(31, 0, 31, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu7t1"]
+atlas = ExtResource("2_mm5en")
+region = Rect2(0, 0, 31, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l021m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ievi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7v4w")
+}],
+"loop": true,
+"name": &"caminando",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2eqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu7t1")
+}],
+"loop": true,
+"name": &"corriendo",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ii1i5")
+}],
+"loop": true,
+"name": &"muerto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7vmus")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ii1i5")
+}],
+"loop": true,
+"name": &"quieto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bihih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l021m")
+}],
+"loop": true,
+"name": &"salto",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ievi"]
+size = Vector2(22, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mm5en"]
+size = Vector2(27.333334, 34)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1903866927 groups=["jugador"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 3
+script = ExtResource("1_mm5en")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1122449059]
+sprite_frames = SubResource("SpriteFrames_l021m")
+animation = &"muerto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=5558648]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8ievi")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=812689301]
+position = Vector2(145.92592, -47.407394)
+limit_left = 0
+limit_top = 648
+limit_right = 7512
+limit_bottom = -20
+limit_smoothed = true
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=776680231]
+position = Vector2(-0.6666667, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1042260672]
+position = Vector2(0.33333302, 0.3333335)
+shape = SubResource("RectangleShape2D_mm5en")
+
+[node name="CanvasLayer" parent="." unique_id=549450195 instance=ExtResource("7_7vmus")]

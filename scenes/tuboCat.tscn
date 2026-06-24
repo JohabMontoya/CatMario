@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dwps74hm72upv"]
+
+[ext_resource type="Texture2D" uid="uid://dg3o8bml6ejc7" path="res://Sprites/CatMario/Tubo.png" id="1_dkyh4"]
+
+[node name="Node2D" type="StaticBody2D" unique_id=680110083]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=675124390]
+scale = Vector2(0.553, 0.533)
+texture = ExtResource("1_dkyh4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=312841740]

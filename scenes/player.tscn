@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dei33r04a0la6"]
+
+[ext_resource type="Script" uid="uid://cyo60wslx6n54" path="res://scripts/player.gd" id="1_2c7ny"]
+[ext_resource type="Texture2D" uid="uid://w5btfj1yey6" path="res://Sprites/marioCaminando1.png" id="2_0jhex"]
+[ext_resource type="Texture2D" uid="uid://cscsebt0arn22" path="res://Sprites/marioCaminando2.png" id="3_38am0"]
+[ext_resource type="Texture2D" uid="uid://fxblwhevn7ij" path="res://Sprites/marioCaminando3.png" id="4_xfidv"]
+[ext_resource type="Texture2D" uid="uid://bwv4o57v5le41" path="res://Sprites/quieto.png" id="5_nxd4c"]
+[ext_resource type="Texture2D" uid="uid://ddtscmsly5xpm" path="res://Sprites/marioSaltando.png" id="6_0jhex"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pev8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0jhex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_38am0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xfidv")
+}],
+"loop": true,
+"name": &"caminando",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_nxd4c")
+}],
+"loop": true,
+"name": &"quieto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0jhex")
+}],
+"loop": true,
+"name": &"salto",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8o0x"]
+size = Vector2(15, 16)
+
+[node name="Player" type="CharacterBody2D" unique_id=1116219148]
+z_index = 5
+texture_filter = 1
+position = Vector2(185.99998, 455.99997)
+scale = Vector2(2, 2)
+collision_layer = 2
+script = ExtResource("1_2c7ny")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=646944998]
+sprite_frames = SubResource("SpriteFrames_0pev8")
+animation = &"salto"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=947661110]
+position = Vector2(145.92592, -47.407394)
+limit_left = 0
+limit_top = 648
+limit_right = 7312
+limit_bottom = -20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=318991635]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_o8o0x")

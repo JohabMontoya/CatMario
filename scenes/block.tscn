@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bidtw785pn8rb"]
+
+[ext_resource type="Texture2D" uid="uid://c3qmm2fsl51tp" path="res://Sprites/CatMario/CatMarioBloques1.png" id="1_8r6n6"]
+[ext_resource type="Script" uid="uid://n4njllp4b1wf" path="res://scripts/block.gd" id="1_cgrg5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cgrg5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8r6n6")
+}],
+"loop": true,
+"name": &"bloque",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgrg5"]
+size = Vector2(14, 1.1481476)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8r6n6"]
+size = Vector2(16, 14)
+
+[node name="Node2D" type="StaticBody2D" unique_id=1900218644]
+script = ExtResource("1_cgrg5")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1468234353]
+position = Vector2(5.0862633e-07, 0)
+scale = Vector2(0.534, 0.534)
+sprite_frames = SubResource("SpriteFrames_cgrg5")
+animation = &"bloque"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1936501701]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=128511681]
+position = Vector2(0, 7.574074)
+shape = SubResource("RectangleShape2D_cgrg5")
+
+[node name="StaticBody2D" type="CollisionShape2D" parent="." unique_id=1720883944]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_8r6n6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://q0bwnlj2b1ug"]
+
+[ext_resource type="Texture2D" uid="uid://xbtjjt6kw8uj" path="res://Sprites/Tubo2.png" id="1_euljv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijo75"]
+size = Vector2(16, 16)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=1798409799]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=615452498]
+texture = ExtResource("1_euljv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1481571290]
+shape = SubResource("RectangleShape2D_ijo75")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dy0bewvhdy1jh"]
+
+[ext_resource type="Texture2D" uid="uid://ujbmvq5ll0qq" path="res://Sprites/CatMario/CatMarioBloques5.png" id="1_bx636"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq8dx"]
+size = Vector2(16, 16)
+
+[node name="Node2D" type="StaticBody2D" unique_id=419608438]
+
+[node name="StaticBody2D" type="Sprite2D" parent="." unique_id=13609099]
+position = Vector2(-2.7311035e-07, -2.7311035e-07)
+scale = Vector2(0.534, 0.534)
+texture = ExtResource("1_bx636")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=186218130]
+shape = SubResource("RectangleShape2D_lq8dx")
