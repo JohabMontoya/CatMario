@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bakc7kwrtqxbo" path="res://Sprites/CatMario/CatMario3.png" id="5_bihih"]
 [ext_resource type="Texture2D" uid="uid://bm0g148mefwjg" path="res://Sprites/CatMario/CatMario7.png" id="6_l021m"]
 [ext_resource type="PackedScene" uid="uid://csqraqcjlrp8s" path="res://scenes/vidas.tscn" id="7_7vmus"]
+[ext_resource type="Script" uid="uid://bwnc1gbb3nuub" path="res://scripts/inventario.gd" id="9_bihih"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ievi"]
 atlas = ExtResource("2_mm5en")
@@ -91,6 +92,9 @@ size = Vector2(22, 33)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mm5en"]
 size = Vector2(27.333334, 34)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ii1i5"]
+size = Vector2(26, 34.000004)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1903866927 groups=["jugador"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 3
@@ -120,3 +124,13 @@ position = Vector2(0.33333302, 0.3333335)
 shape = SubResource("RectangleShape2D_mm5en")
 
 [node name="CanvasLayer" parent="." unique_id=549450195 instance=ExtResource("7_7vmus")]
+
+[node name="Inventario" type="Area2D" parent="." unique_id=1625666039]
+script = ExtResource("9_bihih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventario" unique_id=1438003641]
+position = Vector2(-0.3333335, -0.3333324)
+shape = SubResource("RectangleShape2D_ii1i5")
+debug_color = Color(0.9998403, 0, 0.11491533, 0.41960785)
+
+[connection signal="area_entered" from="Inventario" to="Inventario" method="_on_area_entered"]

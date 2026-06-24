@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DialogBox="*uid://up83ipqse3w1"
 GameManager="*uid://bvf6cvqmnby6n"
+Inventory="*uid://dcd6txfpcmx56"
 
 [input]
 

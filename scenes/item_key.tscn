@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bx1kk1jbj68gg"]
+
+[ext_resource type="PackedScene" uid="uid://dc36yt080fbno" path="res://scenes/item_base.tscn" id="1_rhung"]
+[ext_resource type="Texture2D" uid="uid://bipwlmsjqrb0y" path="res://Sprites/Items/key.png" id="2_4phqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enmos"]
+size = Vector2(47, 47)
+
+[node name="ItemBase" unique_id=710765387 instance=ExtResource("1_rhung")]
+type = 2
+
+[node name="Sprite2D" parent="." index="0" unique_id=1741032638]
+scale = Vector2(1.206, 1)
+texture = ExtResource("2_4phqw")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=357362866]
+position = Vector2(-4.5, -2.5)
+shape = SubResource("RectangleShape2D_enmos")

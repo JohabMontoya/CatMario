@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cia0dq2mbm6hj"]
+
+[ext_resource type="PackedScene" uid="uid://dc36yt080fbno" path="res://scenes/item_base.tscn" id="1_6r3qg"]
+[ext_resource type="Texture2D" uid="uid://4vvj1m3pbl2y" path="res://Sprites/sword.png" id="2_p2epe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7va0"]
+size = Vector2(573, 485)
+
+[node name="ItemBase" unique_id=710765387 instance=ExtResource("1_6r3qg")]
+type = 1
+
+[node name="Sprite2D" parent="." index="0" unique_id=1741032638]
+texture = ExtResource("2_p2epe")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=357362866]
+position = Vector2(15.5, 11.5)
+shape = SubResource("RectangleShape2D_x7va0")

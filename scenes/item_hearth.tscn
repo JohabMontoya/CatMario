@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dakpf6rt6xe10"]
+
+[ext_resource type="PackedScene" uid="uid://dc36yt080fbno" path="res://scenes/item_base.tscn" id="1_e4y6g"]
+[ext_resource type="Texture2D" uid="uid://8atjdm5fe2yv" path="res://Sprites/Items/hearth.png" id="2_4gtv7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rdok"]
+size = Vector2(16, 16)
+
+[node name="ItemBase" unique_id=710765387 instance=ExtResource("1_e4y6g")]
+position = Vector2(-1, -1)
+
+[node name="Sprite2D" parent="." index="0" unique_id=1741032638]
+texture = ExtResource("2_4gtv7")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=357362866]
+shape = SubResource("RectangleShape2D_7rdok")
