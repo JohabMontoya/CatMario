@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dfnmx32lp3p6w"]
+
+[ext_resource type="Script" uid="uid://cvdcow8qntg2s" path="res://scripts/InventoryView.gd" id="1_e0pvr"]
+[ext_resource type="Texture2D" uid="uid://8atjdm5fe2yv" path="res://Sprites/Items/hearth.png" id="2_ucu4k"]
+
+[node name="Control" type="Panel" unique_id=1322227321]
+custom_minimum_size = Vector2(37, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1112.0
+offset_bottom = -607.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e0pvr")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1110688488]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=344727675]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ucu4k")
+
+[node name="Label" type="Label" parent="." unique_id=356619407]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 21.0
+offset_right = 40.0
+offset_bottom = 44.0

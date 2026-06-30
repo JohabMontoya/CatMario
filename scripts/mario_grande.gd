@@ -14,6 +14,12 @@ var muerto: bool = false
 func _ready() -> void:
 	$Hitbox.add_to_group("player_hitbox")
 	GameManager.player_died.connect(_on_player_died)
+	add_to_group("player")
+	
+	var current_scene_path := get_tree().current_scene.scene_file_path
+	
+	if PlayerState.has_position(current_scene_path):
+		global_position = PlayerState.get_position(current_scene_path)
 
 func _on_player_died() -> void:
 	if muerto:
@@ -46,6 +52,7 @@ func _physics_process(delta: float) -> void:
 	match estado_actual:
 		Estados.IDLE:
 			logica_idle()
+			verificar_guardado()
 		Estados.WALKING:
 			logica_walking()
 		Estados.JUMPING:
@@ -147,3 +154,30 @@ func logica_correr() -> void:
 			cambiar_estado(Estados.IDLE)
 	elif direction == 0:
 		cambiar_estado(Estados.IDLE)
+
+
+func  save_current_game() -> void:
+	print("Guardando")
+	var scene_path = get_tree().current_scene.scene_file_path
+	
+	PlayerState.save_position(scene_path, global_position)
+	GameSaver.game_data["current_scene"] = scene_path
+	GameSaver.game_data["player_positions"] = PlayerState.positions
+	GameSaver.game_data["life"] = GameManager.current_health
+	
+
+func load_current_game() -> void:
+	GameSaver.load_game()
+	
+	PlayerState.positions = GameSaver.game_data.get("player_positions", {})
+	var scene_path = GameSaver.game_data.get("current_scene", "")
+	
+	if scene_path != "":
+		get_tree().change_scene_to_file(scene_path)
+
+func verificar_guardado() -> void:
+	if Input.is_action_just_pressed("load_game"):
+		load_current_game()
+	if Input.is_action_just_pressed("save_game"):
+		save_current_game()
+	

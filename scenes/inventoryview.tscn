@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://blbo2skrwpiq2"]
+
+[ext_resource type="Script" uid="uid://bsbypsgcqsa3t" path="res://scripts/Inventory_UI.gd" id="1_yiqxa"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1494795813]
+script = ExtResource("1_yiqxa")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1291638039]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -209.5
+offset_right = 209.5
+offset_bottom = 43.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1577612752]
+layout_mode = 2
+size_flags_horizontal = 4

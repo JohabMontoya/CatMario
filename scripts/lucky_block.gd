@@ -8,7 +8,8 @@ var hitted: bool = false
 
 func _ready() -> void:
 	position_original = position
-	sprite.play("bloque")
+	sprite.play("bloque") 
+	
 
 func golpear_bloque():
 	sprite.play("empty")

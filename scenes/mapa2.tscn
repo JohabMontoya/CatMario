@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://cfu623w2r2444"]
 
+[ext_resource type="Script" uid="uid://dcn2wubejsbel" path="res://scripts/mapa_2.gd" id="1_0wklc"]
 [ext_resource type="PackedScene" uid="uid://ctgf60j04fypp" path="res://scenes/bloqueDuro.tscn" id="3_bseon"]
 [ext_resource type="PackedScene" uid="uid://dy0bewvhdy1jh" path="res://scenes/bloquePiso.tscn" id="3_poyf6"]
 [ext_resource type="Texture2D" uid="uid://p81bainp1ude" path="res://Sprites/Escenario.png" id="3_q1cj1"]
@@ -18,7 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://1u8uf3f87u5j" path="res://scenes/castillo.tscn" id="15_j2e6i"]
 [ext_resource type="PackedScene" uid="uid://k7acqpw81xpt" path="res://scenes/SmaritGoomba.tscn" id="17_4x0y4"]
 [ext_resource type="PackedScene" uid="uid://bx1kk1jbj68gg" path="res://scenes/item_key.tscn" id="18_4x0y4"]
-[ext_resource type="PackedScene" uid="uid://cia0dq2mbm6hj" path="res://scenes/item_sword.tscn" id="19_k3ufq"]
+[ext_resource type="PackedScene" uid="uid://dakpf6rt6xe10" path="res://scenes/item_hearth.tscn" id="19_k3ufq"]
+[ext_resource type="Shader" uid="uid://deer8m3gpp75x" path="res://Shadders/lava.gdshader" id="21_k7nfn"]
+[ext_resource type="Texture2D" uid="uid://b7wf01klkahgp" path="res://Sprites/lava1.png" id="22_tr8te"]
+[ext_resource type="Texture2D" uid="uid://02n10d77yjsh" path="res://Sprites/lava2.png" id="23_4b2nt"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_k3ufq"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -1069,7 +1073,34 @@ sources/4 = SubResource("TileSetScenesCollectionSource_bf0nw")
 sources/1 = SubResource("TileSetScenesCollectionSource_bseon")
 sources/0 = SubResource("TileSetScenesCollectionSource_a5hp2")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wklc"]
+size = Vector2(37, 371)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k7nfn"]
+seamless = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tr8te"]
+shader = ExtResource("21_k7nfn")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_k7nfn")
+shader_parameter/speed = Vector2(0.5, 0.2)
+shader_parameter/wave_strength = 0.1
+shader_parameter/distortion = 0.001
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4b2nt"]
+texture = ExtResource("22_tr8te")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tikm6"]
+texture = ExtResource("23_4b2nt")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_umsht"]
+sources/0 = SubResource("TileSetAtlasSource_4b2nt")
+sources/1 = SubResource("TileSetAtlasSource_tikm6")
+
 [node name="Node2D" type="Node2D" unique_id=1033208364]
+script = ExtResource("1_0wklc")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=929794412]
 z_index = -11
@@ -1110,10 +1141,10 @@ enemigoSpawnear = ExtResource("6_2whce")
 position = Vector2(503, 507)
 
 [node name="CharacterBody2D" parent="." unique_id=1903866927 instance=ExtResource("13_bseon")]
-position = Vector2(305, 541)
+position = Vector2(126.00006, 524)
 
 [node name="StaticBody2D" parent="." unique_id=1525307249 instance=ExtResource("14_a5hp2")]
-position = Vector2(7165, 205)
+position = Vector2(7277, 197)
 
 [node name="StaticBody2D2" parent="." unique_id=512774355 instance=ExtResource("15_j2e6i")]
 z_index = -5
@@ -1173,5 +1204,22 @@ position = Vector2(687, 551)
 [node name="ItemBase" parent="." unique_id=710765387 instance=ExtResource("18_4x0y4")]
 position = Vector2(396, 546)
 
-[node name="ItemBase2" parent="." unique_id=307430627 instance=ExtResource("19_k3ufq")]
-position = Vector2(441, 228)
+[node name="ItemBase2" parent="." unique_id=1010487245 instance=ExtResource("19_k3ufq")]
+position = Vector2(821, 549)
+
+[node name="ItemBase3" parent="." unique_id=656090512 instance=ExtResource("19_k3ufq")]
+position = Vector2(855, 549)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1849406725]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2072561898]
+position = Vector2(7153, 353)
+shape = SubResource("RectangleShape2D_0wklc")
+debug_color = Color(0.326807, 0.62413776, 1.92523e-07, 0.41960785)
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=998195317]
+material = SubResource("ShaderMaterial_tr8te")
+tile_map_data = PackedByteArray("AABgACAAAQAAAAAAAABgACEAAQAAAAAAAABgACIAAQAAAAAAAABgACMAAQAAAAAAAABhACAAAQAAAAAAAABhACEAAQAAAAAAAABhACIAAQAAAAAAAABhACMAAQAAAAAAAABiACAAAQAAAAAAAABiACEAAQAAAAAAAABiACIAAQAAAAAAAABiACMAAQAAAAAAAABjACAAAQAAAAAAAABjACEAAQAAAAAAAABjACIAAQAAAAAAAABjACMAAQAAAAAAAABkACAAAQAAAAAAAABkACEAAQAAAAAAAABkACIAAQAAAAAAAABkACMAAQAAAAAAAABlACAAAQAAAAAAAABlACEAAQAAAAAAAABlACIAAQAAAAAAAABlACMAAQAAAAAAAABmACAAAQAAAAAAAABmACEAAQAAAAAAAABmACIAAQAAAAAAAABmACMAAQAAAAAAAABnACAAAQAAAAAAAABnACEAAQAAAAAAAABnACIAAQAAAAAAAABnACMAAQAAAAAAAABoACAAAQAAAAAAAABoACEAAQAAAAAAAABoACIAAQAAAAAAAABoACMAAQAAAAAAAABpACAAAQAAAAAAAABpACEAAQAAAAAAAABpACIAAQAAAAAAAABpACMAAQAAAAAAAABqACAAAQAAAAAAAABqACEAAQAAAAAAAABqACIAAQAAAAAAAABqACMAAQAAAAAAAABrACAAAQAAAAAAAABrACEAAQAAAAAAAABrACIAAQAAAAAAAABrACMAAQAAAAAAAABsACAAAQAAAAAAAABsACEAAQAAAAAAAABsACIAAQAAAAAAAABsACMAAQAAAAAAAABtACAAAQAAAAAAAABtACEAAQAAAAAAAABtACIAAQAAAAAAAABtACMAAQAAAAAAAABuACAAAQAAAAAAAABuACEAAQAAAAAAAABuACIAAQAAAAAAAABuACMAAQAAAAAAAABvACAAAQAAAAAAAABvACEAAQAAAAAAAABvACIAAQAAAAAAAABvACMAAQAAAAAAAABwACAAAQAAAAAAAABwACEAAQAAAAAAAABwACIAAQAAAAAAAABwACMAAQAAAAAAAABxACAAAQAAAAAAAABxACEAAQAAAAAAAABxACIAAQAAAAAAAABxACMAAQAAAAAAAAByACAAAQAAAAAAAAByACEAAQAAAAAAAAByACIAAQAAAAAAAAByACMAAQAAAAAAAABzACAAAQAAAAAAAABzACEAAQAAAAAAAABzACIAAQAAAAAAAABzACMAAQAAAAAAAAB0ACAAAQAAAAAAAAB0ACEAAQAAAAAAAAB0ACIAAQAAAAAAAAB0ACMAAQAAAAAAAAB1ACAAAQAAAAAAAAB1ACEAAQAAAAAAAAB1ACIAAQAAAAAAAAB1ACMAAQAAAAAAAAB2ACAAAQAAAAAAAAB2ACEAAQAAAAAAAAB2ACIAAQAAAAAAAAB2ACMAAQAAAAAAAAB3ACAAAQAAAAAAAAB3ACEAAQAAAAAAAAB3ACIAAQAAAAAAAAB3ACMAAQAAAAAAAABgACQAAQAAAAAAAABgACUAAQAAAAAAAABgACYAAQAAAAAAAABgACcAAQAAAAAAAABhACQAAQAAAAAAAABhACUAAQAAAAAAAABhACYAAQAAAAAAAABhACcAAQAAAAAAAABiACQAAQAAAAAAAABiACUAAQAAAAAAAABiACYAAQAAAAAAAABiACcAAQAAAAAAAABjACQAAQAAAAAAAABjACUAAQAAAAAAAABjACYAAQAAAAAAAABjACcAAQAAAAAAAABkACQAAQAAAAAAAABkACUAAQAAAAAAAABkACYAAQAAAAAAAABkACcAAQAAAAAAAABlACQAAQAAAAAAAABlACUAAQAAAAAAAABlACYAAQAAAAAAAABlACcAAQAAAAAAAABmACQAAQAAAAAAAABmACUAAQAAAAAAAABmACYAAQAAAAAAAABmACcAAQAAAAAAAABnACQAAQAAAAAAAABnACUAAQAAAAAAAABnACYAAQAAAAAAAABnACcAAQAAAAAAAABoACQAAQAAAAAAAABoACUAAQAAAAAAAABoACYAAQAAAAAAAABoACcAAQAAAAAAAABpACQAAQAAAAAAAABpACUAAQAAAAAAAABpACYAAQAAAAAAAABpACcAAQAAAAAAAABqACQAAQAAAAAAAABqACUAAQAAAAAAAABqACYAAQAAAAAAAABqACcAAQAAAAAAAABrACQAAQAAAAAAAABrACUAAQAAAAAAAABrACYAAQAAAAAAAABrACcAAQAAAAAAAABsACQAAQAAAAAAAABsACUAAQAAAAAAAABsACYAAQAAAAAAAABsACcAAQAAAAAAAABtACQAAQAAAAAAAABtACUAAQAAAAAAAABtACYAAQAAAAAAAABtACcAAQAAAAAAAABuACQAAQAAAAAAAABuACUAAQAAAAAAAABuACYAAQAAAAAAAABuACcAAQAAAAAAAABvACQAAQAAAAAAAABvACUAAQAAAAAAAABvACYAAQAAAAAAAABvACcAAQAAAAAAAABwACQAAQAAAAAAAABwACUAAQAAAAAAAABwACYAAQAAAAAAAABwACcAAQAAAAAAAABxACQAAQAAAAAAAABxACUAAQAAAAAAAABxACYAAQAAAAAAAABxACcAAQAAAAAAAAByACQAAQAAAAAAAAByACUAAQAAAAAAAAByACYAAQAAAAAAAAByACcAAQAAAAAAAABzACQAAQAAAAAAAABzACUAAQAAAAAAAABzACYAAQAAAAAAAABzACcAAQAAAAAAAAB0ACQAAQAAAAAAAAB0ACUAAQAAAAAAAAB0ACYAAQAAAAAAAAB0ACcAAQAAAAAAAAB1ACQAAQAAAAAAAAB1ACUAAQAAAAAAAAB1ACYAAQAAAAAAAAB1ACcAAQAAAAAAAAB2ACQAAQAAAAAAAAB2ACUAAQAAAAAAAAB2ACYAAQAAAAAAAAB2ACcAAQAAAAAAAAB3ACQAAQAAAAAAAAB3ACUAAQAAAAAAAAB3ACYAAQAAAAAAAAB3ACcAAQAAAAAAAABgAB8AAAAAAAAAAABhAB8AAAAAAAAAAABiAB8AAAAAAAAAAABjAB8AAAAAAAAAAABkAB8AAAAAAAAAAABlAB8AAAAAAAAAAABmAB8AAAAAAAAAAABnAB8AAAAAAAAAAABoAB8AAAAAAAAAAABpAB8AAAAAAAAAAABqAB8AAAAAAAAAAABrAB8AAAAAAAAAAABsAB8AAAAAAAAAAABtAB8AAAAAAAAAAABuAB8AAAAAAAAAAABvAB8AAAAAAAAAAABwAB8AAAAAAAAAAABxAB8AAAAAAAAAAAByAB8AAAAAAAAAAABzAB8AAAAAAAAAAAB0AB8AAAAAAAAAAAB1AB8AAAAAAAAAAAB2AB8AAAAAAAAAAAB3AB8AAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_umsht")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

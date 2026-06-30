@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bm0g148mefwjg" path="res://Sprites/CatMario/CatMario7.png" id="6_l021m"]
 [ext_resource type="PackedScene" uid="uid://csqraqcjlrp8s" path="res://scenes/vidas.tscn" id="7_7vmus"]
 [ext_resource type="Script" uid="uid://bwnc1gbb3nuub" path="res://scripts/inventario.gd" id="9_bihih"]
+[ext_resource type="PackedScene" uid="uid://blbo2skrwpiq2" path="res://scenes/inventoryview.tscn" id="10_l021m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ievi"]
 atlas = ExtResource("2_mm5en")
@@ -132,5 +133,7 @@ script = ExtResource("9_bihih")
 position = Vector2(-0.3333335, -0.3333324)
 shape = SubResource("RectangleShape2D_ii1i5")
 debug_color = Color(0.9998403, 0, 0.11491533, 0.41960785)
+
+[node name="CanvasLayer2" parent="." unique_id=1494795813 instance=ExtResource("10_l021m")]
 
 [connection signal="area_entered" from="Inventario" to="Inventario" method="_on_area_entered"]

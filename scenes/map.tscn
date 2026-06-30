@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dr2tsxwhpnxod"]
 
+[ext_resource type="Script" uid="uid://baopvqv5fcho7" path="res://scripts/map.gd" id="1_gldc4"]
 [ext_resource type="Texture2D" uid="uid://p81bainp1ude" path="res://Sprites/Escenario.png" id="1_paxxb"]
-[ext_resource type="PackedScene" uid="uid://dei33r04a0la6" path="res://scenes/player.tscn" id="2_gldc4"]
+[ext_resource type="PackedScene" uid="uid://d0c38q7wt4ybn" path="res://scenes/MarioGrande.tscn" id="2_paxxb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rbgte"]
 size = Vector2(2588, 77)
@@ -21,7 +22,11 @@ size = Vector2(87, 94.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4urg"]
 size = Vector2(83, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paxxb"]
+size = Vector2(37, 82.5)
+
 [node name="Node2D" type="Node2D" unique_id=2124850956]
+script = ExtResource("1_gldc4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=324843100]
 position = Vector2(1296, 324)
@@ -54,6 +59,14 @@ shape = SubResource("RectangleShape2D_xau04")
 position = Vector2(1685.5, 497)
 shape = SubResource("RectangleShape2D_v4urg")
 
-[node name="Player" parent="." unique_id=1116219148 instance=ExtResource("2_gldc4")]
-visible = false
-position = Vector2(150, 534)
+[node name="CharacterBody2D" parent="." unique_id=1903866927 instance=ExtResource("2_paxxb")]
+position = Vector2(213, 523)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=983394571]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1225935918]
+position = Vector2(51, 511)
+shape = SubResource("RectangleShape2D_paxxb")
+debug_color = Color(0.326807, 0.62413776, 1.92523e-07, 0.41960785)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
